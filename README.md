@@ -1,2 +1,1 @@
-# algorithm-practice-with-java
-Algorithm Practice With Java
+# Algorithm Practice With Java
