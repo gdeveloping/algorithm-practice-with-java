@@ -1,4 +1,4 @@
-package tech.gdev.algorithmpractice.leetcode.twopointers.easy;
+package tech.gdev.algorithmpractice.leetcode.dynamicprogramming.easy;
 
 /**
  * 53.
