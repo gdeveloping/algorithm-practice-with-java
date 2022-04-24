@@ -1,4 +1,4 @@
-package tech.gdev.algorithmpractice.util;
+package tech.gdev.algorithmpractice.leetcode.dynamicprogramming.easy;
 
 /**
  * 121.
