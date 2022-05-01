@@ -27,14 +27,12 @@ public class StringFormat {
     public static void formatTitleString(String str) {
         if (str == null || str.isEmpty()) {return;}
         String[] arr = str.trim().toLowerCase().split(" |-|_");
-
         StringBuilder sb = new StringBuilder();
         for (String s : arr) {
             sb.append(" ")
-                    .append((char) (s.charAt(0)+'A'-'a'))
+                    .append(getUpperCase(s.charAt(0)))
                     .append(s.substring(1));
         }
-//        System.out.println(sb);
         String res = sb.length() > 0 ? sb.substring(1) : sb.toString();
         System.out.println(res.replace(" ", ""));
         System.out.println(res.replace(" ", "-").toLowerCase());
@@ -42,7 +40,15 @@ public class StringFormat {
         System.out.println(res.toUpperCase());
     }
 
+    private static char getUpperCase(char c) {
+        if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
+            return (char) (c + 'A' - 'a');
+        }
+        return c;
+    }
+
     public static void formatArrayString(String str) {
+        if (str == null || str.isEmpty()) {return;}
         String res = str
                 .replace("[", "{")
                 .replace("]", "}");
