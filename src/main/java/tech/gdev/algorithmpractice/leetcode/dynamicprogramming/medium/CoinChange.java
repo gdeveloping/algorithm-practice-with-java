@@ -66,4 +66,32 @@ public class CoinChange {
             return dp[amount];
         }
     }
+
+    private static class Solution2 {
+
+        /**
+         * time: O(MN), N:len(coins), M:amount
+         * space: O(M)
+         *
+         * Runtime: 29 ms, faster than 45.04% of Java online submissions for Coin Change.
+         * Memory Usage: 44.8 MB, less than 61.70% of Java online submissions for Coin Change.
+         *
+         * @param coins -
+         * @param amount -
+         * @return -
+         */
+        public int coinChange(int[] coins, int amount) {
+            int[] dp = new int[amount+1];
+            Arrays.fill(dp, dp.length);
+            dp[0] = 0;
+            for (int i = 0; i < coins.length; i++) {
+                for (int j = 1; j <= amount; j++) {
+                    if (j >= coins[i]) {
+                        dp[j] = Math.min(dp[j], 1 + dp[j-coins[i]]);
+                    }
+                }
+            }
+            return dp[amount] == dp.length ? -1 : dp[amount];
+        }
+    }
 }
