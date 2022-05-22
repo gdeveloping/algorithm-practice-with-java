@@ -94,4 +94,68 @@ public class CoinChange {
             return dp[amount] == dp.length ? -1 : dp[amount];
         }
     }
+
+    private static class Solution3 {
+        public static void main(String[] args) {
+            Solution3 solution3 = new Solution3();
+            Solution1 solution1 = new Solution1();
+            int[] coins = {186,419,83,408};
+            int amount = 6249;
+            long start, end;
+
+            start = System.currentTimeMillis();
+            System.out.println(solution3.coinChange(coins, amount));
+            end = System.currentTimeMillis();
+            long t1 = end - start;
+            // 20
+            // t1: 21809
+            System.out.println("t1: " + t1);
+
+            System.out.println();
+            start = System.currentTimeMillis();
+            System.out.println(solution1.coinChange(coins, amount));
+            end = System.currentTimeMillis();
+            long t2 = end - start;
+            // 20
+            // t2: 1
+            System.out.println("t2: " + t2);
+        }
+
+        /**
+         * time: O(MN), N:len(coins), M:amount
+         * space: O(M)
+         *
+         * Time Limit Exceeded
+         *
+         * @param coins -
+         * @param amount -
+         * @return -
+         */
+        public int coinChange(int[] coins, int amount) {
+            if (amount <= 0) {return 0;}
+            int[] memo = new int[amount+1];
+            Arrays.fill(memo, amount+1);
+            memo[0] = 0;
+            for (int i = 0; i < coins.length; i++) {
+                if (coins[i] <= amount) {
+                    memo[coins[i]] = 1;
+                }
+            }
+            int res = coinChange(amount, coins, memo);
+            return (res == amount+1) ? -1 : res;
+        }
+
+        private int coinChange(int amount, int[] coins, int[] memo) {
+            if (memo[amount] <= amount) {
+                return memo[amount];
+            }
+            int res = memo[amount];
+            for (int i = 0; i < coins.length; i++) {
+                if (coins[i] >= amount) {continue;}
+                res = Math.min(res, 1 + coinChange(amount-coins[i], coins, memo));
+            }
+            memo[amount] = res;
+            return res;
+        }
+    }
 }
