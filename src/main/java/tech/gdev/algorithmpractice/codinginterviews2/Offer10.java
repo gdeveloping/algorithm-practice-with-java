@@ -10,6 +10,13 @@ package tech.gdev.algorithmpractice.codinginterviews2;
 public class Offer10 {
 
     private static class Solution1 {
+        /**
+         * time: O(N)
+         * space: O(1)
+         *
+         * @param n -
+         * @return -
+         */
         public int fib(int n) {
             if (n == 0) {
                 return 0;
