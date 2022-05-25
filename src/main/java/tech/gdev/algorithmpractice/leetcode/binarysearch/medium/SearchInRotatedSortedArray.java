@@ -61,7 +61,8 @@ public class SearchInRotatedSortedArray {
                 }
                 // A: left, ..., max, min, ...(mid)..., right
                 // B: min, ...(mid)..., max
-                if (nums[mid] <= nums[right]) {
+                // if (nums[mid] <= nums[right])
+                else {
                     if (nums[mid] <= target && target <= nums[right]) {
                         // left, ..., max, min, ...(mid)...(target)..., right
                         left = mid + 1;
@@ -76,5 +77,4 @@ public class SearchInRotatedSortedArray {
             return -1;
         }
     }
-
 }
