@@ -52,14 +52,14 @@ public class Offer14 {
             if (n == 2) {return 1;}
             if (n == 3) {return 2;}
             if (n == 4) {return 4;}
-            int res = 1;
+            long res = 1;
             int p = (int) 1e9 + 7;
             while (n > 4) {
                 res = res * 3 % p;
                 n -= 3;
             }
             res = res * n % p;
-            return res;
+            return (int) res;
         }
     }
 }
