@@ -24,7 +24,7 @@ public class Offer19 {
                 return false;
             }
             final char symbolStar = '*';
-            final char symbolComma = '.';
+            final char symbolDot = '.';
             int m = s.length();
             int n = p.length();
             boolean[][] dp = new boolean[m+1][n+1];
@@ -32,7 +32,7 @@ public class Offer19 {
             for (int i = 0; i <= m; i++) {
                 for (int j = 1; j <= n; j++) {
                     if (p.charAt(j-1) != symbolStar) {
-                        if (i > 0 && (s.charAt(i-1) == p.charAt(j-1) || p.charAt(j-1) == symbolComma)) {
+                        if (i > 0 && (s.charAt(i-1) == p.charAt(j-1) || p.charAt(j-1) == symbolDot)) {
                             dp[i][j] = dp[i-1][j-1];
                         }
                     } else {
@@ -41,7 +41,7 @@ public class Offer19 {
                             dp[i][j] = dp[i][j] || dp[i][j-2];
                         }
                         // * match many times
-                        if (i >= 1 && j >= 2 && (s.charAt(i-1) == p.charAt(j-2) || p.charAt(j-2) == symbolComma)) {
+                        if (i >= 1 && j >= 2 && (s.charAt(i-1) == p.charAt(j-2) || p.charAt(j-2) == symbolDot)) {
                             dp[i][j] = dp[i][j] || dp[i-1][j];
                         }
                     }

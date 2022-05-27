@@ -13,8 +13,8 @@ import java.util.Map;
 public class RegularExpressionMatching {
 
     private static class Solution1 {
-        private static final char SYMBOL_START = '*';
-        private static final char SYMBOL_COMMA = '.';
+        private static final char SYMBOL_STAR = '*';
+        private static final char SYMBOL_DOT = '.';
 
         /**
          * time: O(mn) m=len(s), n=len(p)
@@ -46,7 +46,7 @@ public class RegularExpressionMatching {
                     return false;
                 }
                 for (; j + 1 < n; j += 2) {
-                    if (p.charAt(j+1) != SYMBOL_START) {
+                    if (p.charAt(j+1) != SYMBOL_STAR) {
                         return false;
                     }
                 }
@@ -59,15 +59,15 @@ public class RegularExpressionMatching {
             }
 
             boolean res = false;
-            if (s.charAt(i) == p.charAt(j) || p.charAt(j) == SYMBOL_COMMA) {
-                if (j < n-1 && p.charAt(j+1) == SYMBOL_START) {
+            if (s.charAt(i) == p.charAt(j) || p.charAt(j) == SYMBOL_DOT) {
+                if (j < n-1 && p.charAt(j+1) == SYMBOL_STAR) {
                     // match 0 or many times
                     res =  isMatch(s, i, p, j+2) || isMatch(s, i+1, p, j);
                 } else {
                     res =  isMatch(s, i+1, p, j+1);
                 }
             } else {
-                if (j < n-1 && p.charAt(j+1) == SYMBOL_START) {
+                if (j < n-1 && p.charAt(j+1) == SYMBOL_STAR) {
                     // match 0 times
                     res =  isMatch(s, i, p, j+2);
                 } else {
