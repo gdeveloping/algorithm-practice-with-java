@@ -73,8 +73,8 @@ public class CoinChange {
          * time: O(MN), N:len(coins), M:amount
          * space: O(M)
          *
-         * Runtime: 29 ms, faster than 45.04% of Java online submissions for Coin Change.
-         * Memory Usage: 44.8 MB, less than 61.70% of Java online submissions for Coin Change.
+         * Runtime: 19 ms, faster than 79.94% of Java online submissions for Coin Change.
+         * Memory Usage: 45.6 MB, less than 28.18% of Java online submissions for Coin Change.
          *
          * @param coins -
          * @param amount -
@@ -85,10 +85,8 @@ public class CoinChange {
             Arrays.fill(dp, dp.length);
             dp[0] = 0;
             for (int i = 0; i < coins.length; i++) {
-                for (int j = 1; j <= amount; j++) {
-                    if (j >= coins[i]) {
-                        dp[j] = Math.min(dp[j], 1 + dp[j-coins[i]]);
-                    }
+                for (int j = coins[i]; j <= amount; j++) {
+                    dp[j] = Math.min(dp[j], 1 + dp[j-coins[i]]);
                 }
             }
             return dp[amount] == dp.length ? -1 : dp[amount];
