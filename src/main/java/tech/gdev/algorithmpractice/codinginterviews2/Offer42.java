@@ -41,7 +41,7 @@ public class Offer42 {
         }
 
         /**
-         * time: O(log(N))
+         * time: O(N)
          * space: O(log(N)) stack
          *
          * @param nums -
