@@ -13,10 +13,10 @@ public class BestTimeToBuyAndSellStockII {
         int[] prices;
         int res;
         int output;
-        Solution1 solution1 = new Solution1();
+        Solution1 s1 = new Solution1();
         prices = new int[]{7,1,5,3,6,4};
         output = 7;
-        res = solution1.maxProfit(prices);
+        res = s1.maxProfit(prices);
         System.out.println("res: " + res + "\toutput: " + (res == output));
     }
 
@@ -39,6 +39,32 @@ public class BestTimeToBuyAndSellStockII {
                 }
             }
             return profit;
+        }
+    }
+
+    private static class Solution2 {
+        /**
+         * time: O(N)
+         * space: O(1)
+         *
+         * Runtime: 2 ms, faster than 32.84% of Java online submissions for Best Time to Buy and Sell Stock II.
+         * Memory Usage: 43.8 MB, less than 67.20% of Java online submissions for Best Time to Buy and Sell Stock II.
+         *
+         * action: [buy, sell, rest]
+         * status: dp[i][max k transactions][if hold]
+         * k = +Infinity --> ik0, ik1
+         *
+         * @param prices -
+         * @return -
+         */
+        public int maxProfit(int[] prices) {
+            int ik0 = 0, ik1 = Integer.MIN_VALUE;
+            for (int price : prices) {
+                int ik0Old = ik0;
+                ik0 = Math.max(ik0, ik1 + price);
+                ik1 = Math.max(ik1, ik0Old - price);
+            }
+            return ik0;
         }
     }
 }
