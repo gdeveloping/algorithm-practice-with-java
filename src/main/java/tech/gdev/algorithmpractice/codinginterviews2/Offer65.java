@@ -8,7 +8,6 @@ package tech.gdev.algorithmpractice.codinginterviews2;
  * @date 2022/7/24 19:17
  */
 public class Offer65 {
-
     public static void main(String[] args) {
         Solution1 s1 = new Solution1();
         int res;
