@@ -20,6 +20,17 @@ public class ListNodeUtil {
         return dummy.next;
     }
 
+    public static ListNode[] convertArraysToListNode(int[][] arrays) {
+        if (arrays == null || arrays.length == 0) {
+            return new ListNode[0];
+        }
+        ListNode[] nodes = new ListNode[arrays.length];
+        for (int i = 0; i < arrays.length; i++) {
+            nodes[i] = convertArrayToListNode(arrays[i]);
+        }
+        return nodes;
+    }
+
     public static void printListNode(ListNode node) {
         if (node == null) {
             return;
